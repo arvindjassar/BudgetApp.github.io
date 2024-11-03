@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        main {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .section input[type="text"], .section input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .balance {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+            color: #4CAF50;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Budget Tracker</h1>
+</header>
+
+<main>
+    <div class="section">
+        <h2>Income</h2>
+        <label for="income">Total Income:</label>
+        <input type="number" id="income" placeholder="Enter your total income" required>
+    </div>
+
+    <div class="section">
+        <h2>Expenses</h2>
+        <label for="expenses">Total Expenses:</label>
+        <input type="number" id="expenses" placeholder="Enter your total expenses" required>
+    </div>
+
+    <div class="section">
+        <button class="button" onclick="calculateBudget()">Calculate Balance</button>
+        <p class="balance" id="balance">Balance: $0</p>
+    </div>
+</main>
+
+<script>
+    function calculateBudget() {
+        const income = document.getElementById("income").value;
+        const expenses = document.getElementById("expenses").value;
+        const balance = income - expenses;
+
+        const balanceText = document.getElementById("balance");
+        balanceText.innerHTML = `Balance: $${balance}`;
+
+        if (balance < 0) {
+            balanceText.style.color = 'red';
+        } else {
+            balanceText.style.color = '#4CAF50';
+        }
+    }
+</script>
+
+</body>
+</html>
